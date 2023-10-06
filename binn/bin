@@ -1,0 +1,150 @@
+<!-- content -->
+<div class="hero-section">
+  <!-- Hero Slide -->
+  <div class="hero-slide">
+    <div class="owl-carousel carousel-nav-center" id="hero-carousel">
+      <!-- SLIDE ITEM -->
+      <div class="hero-slide-item">
+        <img src="./img/black-banner.png" alt="" />
+        <div class="overlay"></div>
+        <div class="hero-slide-item-content">
+          <div class="item-content-wraper">
+            <div class="item-content-title top-down">Black Panther</div>
+            <div class="movie-infos top-down delay-2">
+              <div class="movie-info">
+                <i class="bx bxs-star"></i>
+                <span>9.5</span>
+              </div>
+              <div class="movie-info">
+                <i class="bx bxs-time"></i>
+                <span>120 mins</span>
+              </div>
+              <div class="movie-info">
+                <span>HD</span>
+              </div>
+              <div class="movie-info">
+                <span>16+</span>
+              </div>
+            </div>
+            <div class="item-content-description top-down delay-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus eius. Deserunt non odit, cum vero reprehenderit laudantium odio vitae autem quam, incidunt molestias ratione mollitia accusantium, facere ab suscipit.
+            </div>
+            <div class="item-action top-down delay-6">
+              <a href="#" class="btn btn-hover">
+                <i class="bx bxs-right-arrow"></i>
+                <span>Watch now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END SLIDE ITEM -->
+      <!-- SLIDE ITEM -->
+      <div class="hero-slide-item">
+        <img src="./img/supergirl-banner.jpg" alt="" />
+        <div class="overlay"></div>
+        <div class="hero-slide-item-content">
+          <div class="item-content-wraper">
+            <div class="item-content-title top-down">Supergirl</div>
+            <div class="movie-infos top-down delay-2">
+              <div class="movie-info">
+                <i class="bx bxs-star"></i>
+                <span>9.5</span>
+              </div>
+              <div class="movie-info">
+                <i class="bx bxs-time"></i>
+                <span>120 mins</span>
+              </div>
+              <div class="movie-info">
+                <span>HD</span>
+              </div>
+              <div class="movie-info">
+                <span>16+</span>
+              </div>
+            </div>
+            <div class="item-content-description top-down delay-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus eius. Deserunt non odit, cum vero reprehenderit laudantium odio vitae autem quam, incidunt molestias ratione mollitia accusantium, facere ab suscipit.
+            </div>
+            <div class="item-action top-down delay-6">
+              <a href="#" class="btn btn-hover">
+                <i class="bx bxs-right-arrow"></i>
+                <span>Watch now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END SLIDE ITEM -->
+      <!-- SLIDE ITEM -->
+      <div class="hero-slide-item">
+        <img src="./img/wanda-banner.jpg" alt="" />
+        <div class="overlay"></div>
+        <div class="hero-slide-item-content">
+          <div class="item-content-wraper">
+            <div class="item-content-title top-down">Wanda Vision</div>
+            <div class="movie-infos top-down delay-2">
+              <div class="movie-info">
+                <i class="bx bxs-star"></i>
+                <span>9.5</span>
+              </div>
+              <div class="movie-info">
+                <i class="bx bxs-time"></i>
+                <span>120 mins</span>
+              </div>
+              <div class="movie-info">
+                <span>HD</span>
+              </div>
+              <div class="movie-info">
+                <span>16+</span>
+              </div>
+            </div>
+            <div class="item-content-description top-down delay-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus eius. Deserunt non odit, cum vero reprehenderit laudantium odio vitae autem quam, incidunt molestias ratione mollitia accusantium, facere ab suscipit.
+            </div>
+            <div class="item-action top-down delay-6">
+              <a href="#" class="btn btn-hover">
+                <i class="bx bxs-right-arrow"></i>
+                <span>Watch now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END SLIDE ITEM -->
+    </div>
+  </div>
+  <!-- End Hero Slide -->
+</div>
+<!-- end content -->
+
+
+<!-- Latest-fetcher -->
+<?php
+include 'koneksi.php';
+
+
+  $im = "SELECT * FROM movies" ;
+  $records = mysqli_query($con,$im);
+  $count = mysqli_num_rows($records);
+
+
+  $i=$count;
+  $j=$count-3;
+  $newim = "SELECT * FROM movies WHERE mid BETWEEN '$j' AND '$i'" ;
+  $newrecords = mysqli_query($con,$newim);
+    while($fetchr = mysqli_fetch_assoc($newrecords)){
+
+      echo"<form action='movie.php' method='POST'>";
+      echo"<div class='col'>";
+      echo "<img src='uploads/".$fetchr['imgpath']."' height='250' width='200' style='margin-top: 30px;margin-left:50px;margin-right:20px;' />";
+        echo"<div class='noob'>";
+          echo "<input type='submit' name='submit' class='btn btn-outline-info' style='display:block;width:200px;padding-bottom:15px;margin-bottom:30px;margin-left:50px;margin-right:20px;' value='".ucwords($fetchr['name'])."'/>";
+        echo"</div>";
+      echo"</div>";
+      echo"</form>";
+
+
+    }
+
+    ?>
+<!-- End Latest-fetcher -->

@@ -1,0 +1,95 @@
+<!-- nav -->
+    <div class="nav-wrapper">
+      <div class="container">
+        <div class="nav">
+          <a href="#" class="logo"> <i class="bx bx-movie-play bx-tada main-color"></i>Nex<span class="main-color">Flit</span> </a>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#">Genre</a></li>
+            <li><a href="movie-list.php">Movies</a></li>
+            <li><a href="admin.php">Add Movies</a></li>
+            <li><a href="account.php">Account</a></li>
+            <!-- <li>
+              <a href="#" class="btn btn-hover">
+                <span>Sign In</span>
+              </a>
+            </li> -->
+            <?php if(isset($_SESSION['username'])){ ?>                                
+              <li><a class="btn btn-hover" href="index.php?logout='1'"><span>Logout</span></a></li>
+                <?php } else if(isset($_GET['logout'])){ 
+                header("location: index.php"); ?>
+              </li>
+                <?php } else { ?>
+              <li><a class="btn btn-hover" href="login_register/login.php"><span>Log In</span></a></li>
+          <?php } ?>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end nav -->
+
+    <!-- PHP search -->
+    <?php            
+      echo"<div class='container' style='margin-top:15px;padding-top:30px;padding-bottom:30px;'>
+        <div class='row'>
+          <div class='col'>
+            <form action='search.php' method='POST'>
+              <select  name='option' style='padding:5px;'>
+                <option value='name'>Name</option>
+                <option value='genre'>Genre</option>
+                <option value='rdate'>Release year</option>
+              </select>
+              <input type='text' placeholder='Enter..' style='margin-left:10px;margin-top:10px;padding:5px;' name='textoption'>
+
+              <input type='submit' name='submit' class='btn btn-danger' value='Search'/></h4>
+            </form>
+          </div>
+        </div>
+      </div>";
+      ?>
+    <!-- PHP search end -->
+
+    <!-- Navbar -->
+    <!-- <section id=navbar>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <i class="bx bx-movie-play bx-tada main-color"></i>
+          <img src="img/NexFlit.png" alt="" width="60" height="15">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="movie-list.php">Movies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.php">Add Movies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Account.php">Account</a>
+            </li>
+            <li class="nav-item">
+            <?php if(isset($_SESSION['username'])){ ?>                                
+                  <a class="nav-link" href="index.php?logout='1'"><span>Logout</span></a>
+                    <?php } else if(isset($_GET['logout'])){ 
+                    header("location: index.php"); ?>
+                    <?php } else { ?>
+                  <a class="nav-link" href="login_register/login.php"><span>Log In</span></a>
+              <?php } ?>
+            </li>
+          </ul>
+          <form action="search.php" class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" value="Search">Search</button>
+          </form> 
+        </div>
+      </div>
+    </nav>
+    </section> -->
+    <!-- Navbar -->
